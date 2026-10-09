@@ -1,0 +1,138 @@
+﻿
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Wooden Diameter</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="header">
+            <div class="logo">🌲</div>
+            <h1>Wooden Diameter</h1>
+            <p>Kalkulačka pro výpočet průměru kulatiny</p>
+        </header>
+
+        <section class="calculator">
+
+            <h2>Výpočet průměru kmene</h2>
+
+            <p class="description">
+                Zadejte rozměry požadovaného trámu.
+                Aplikace vypočítá minimální průměr
+                kmene potřebný k jeho vyřezání.
+            </p>
+
+            <!-- Výběr tvaru -->
+            <div class="input-group">
+                <label for="shape">Tvar trámu</label>
+
+                <select id="shape">
+                    <option value="square">Čtverec</option>
+                    <option value="rectangle">Obdélník</option>
+                </select>
+            </div>
+
+            <!-- Strana A -->
+            <div class="input-group">
+                <label for="sideA" id="sideALabel">
+                    Délka strany (cm)
+                </label>
+
+                <div class="input-wrapper">
+                    <input type="number"
+                           id="sideA"
+                           placeholder="Např. 20"
+                           min="0"
+                           step="any">
+                    <span class="unit">cm</span>
+                </div>
+            </div>
+
+            <!-- Strana B - pouze obdélník -->
+            <div class="input-group hidden" id="sideBGroup">
+                <label for="sideB">
+                    Délka strany B (cm)
+                </label>
+
+                <div class="input-wrapper">
+                    <input type="number"
+                           id="sideB"
+                           placeholder="Např. 30"
+                           min="0"
+                           step="any">
+                    <span class="unit">cm</span>
+                </div>
+            </div>
+
+            <!-- Rezerva -->
+            <div class="input-group">
+                <label for="reserve">
+                    Rezerva na průměru (cm)
+                </label>
+
+                <div class="input-wrapper">
+                    <input type="number"
+                           id="reserve"
+                           value="0"
+                           min="0"
+                           step="any">
+                    <span class="unit">cm</span>
+                </div>
+            </div>
+
+            <!-- Tlačítko -->
+            <button id="calculateBtn" type="button">
+                Vypočítat průměr
+            </button>
+
+            <!-- Výsledek -->
+            <div class="result" aria-live="polite">
+                <p>Potřebný průměr kmene</p>
+                <h3 id="resultValue">-- cm</h3>
+            </div>
+
+            <p class="note">
+                Výpočet předpokládá dokonale kruhový
+                průřez kmene. V praxi doporučujeme
+                počítat s rezervou.
+            </p>
+
+        </section>
+
+        <footer>
+            <p>Wooden Diameter</p>
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+    <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker.register("./service-worker.js")
+                        .then(() => {
+                            console.log("Service Worker zaregistrován.");
+                        })
+                        .catch((error) => {
+                            console.error("Chyba Service Workeru:", error);
+                        });
+                });
+            }
+    </script>
+
+</body>
+</html>
+
+</body>
+</html>
