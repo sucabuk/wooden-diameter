@@ -1,0 +1,204 @@
+﻿
+/* Základní nastavení */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6f3;
+    color: #24352a;
+    min-height: 100vh;
+}
+
+/* Hlavní kontejner */
+
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Hlavička */
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: #225c39;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 14px;
+    color: #78867c;
+}
+
+/* Kalkulačka */
+
+.calculator {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+}
+
+    .calculator h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+.description {
+    font-size: 14px;
+    color: #7a857d;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Vstupní pole */
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #d8e0da;
+    border-radius: 10px;
+    font-size: 17px;
+    color: #24352a;
+    background: #fafcfb;
+    outline: none;
+}
+
+input {
+    padding-right: 55px;
+}
+
+    input:focus,
+    select:focus {
+        border-color: #2e8050;
+    }
+
+.unit {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7b8980;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+/* Skrytá pole */
+
+.hidden {
+    display: none;
+}
+
+/* Tlačítko */
+
+button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #287a48;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+    button:hover {
+        background: #20633a;
+    }
+
+    button:active {
+        background: #174b2b;
+    }
+
+/* Výsledek */
+
+.result {
+    margin-top: 25px;
+    padding: 25px 15px;
+    background: #eaf5ed;
+    border-radius: 12px;
+    text-align: center;
+}
+
+    .result p {
+        font-size: 14px;
+        color: #5c8066;
+        margin-bottom: 10px;
+    }
+
+    .result h3 {
+        font-size: 32px;
+        color: #21643c;
+    }
+
+/* Poznámka */
+
+.note {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #8a968e;
+    text-align: center;
+}
+
+/* Patička */
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 12px;
+    color: #9aa69d;
+}
+
+/* Mobilní zařízení */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 16px;
+    }
+
+    .calculator {
+        padding: 22px 18px;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .result h3 {
+        font-size: 28px;
+    }
+}
