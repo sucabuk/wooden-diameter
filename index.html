@@ -1,0 +1,171 @@
+﻿
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wooden Diameter</title>
+
+    <meta name="theme-color" content="#287a48">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Wooden Diameter">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="app-header">
+            <img src="./icons/icon-512.png"
+                 alt="Wooden Diameter"
+                 class="app-logo"
+                 width="90"
+                 height="90"
+                 style="display:block;width:90px;height:90px;object-fit:cover;margin:0 auto 12px;border-radius:20px;">
+            <p>Kalkulačka pro výpočty při zpracování dřeva</p>
+        </header>
+
+        <div class="calculator">
+
+            <!-- Přepínání výpočtů -->
+            <div class="mode-switch"
+                 style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:12px;width:100%;">
+                <button type="button"
+                        id="diameterMode"
+                        class="mode-button active"
+                        style="flex:1 1 0;width:0;min-width:0;">
+                    Průměr kulatiny
+                </button>
+
+                <button type="button"
+                        id="boardsMode"
+                        class="mode-button"
+                        style="flex:1 1 0;width:0;min-width:0;">
+                    Prkna / fošny
+                </button>
+            </div>
+
+            <!-- Výpočet průměru kulatiny -->
+            <section id="diameterSection" style="padding-top: 30px;">
+
+                <div class="input-group">
+                    <label for="sideA">Strana A (cm)</label>
+                    <input type="number"
+                           id="sideA"
+                           min="0"
+                           step="any"
+                           inputmode="decimal"
+                           placeholder="Zadejte stranu A">
+                </div>
+
+                <div class="input-group">
+                    <label for="sideB">Strana B (cm)</label>
+                    <input type="number"
+                           id="sideB"
+                           min="0"
+                           step="any"
+                           inputmode="decimal"
+                           placeholder="Zadejte stranu B">
+                </div>
+
+                <div class="input-group">
+                    <label for="reserve">Rezerva (cm)</label>
+                    <input type="number"
+                           id="reserve"
+                           min="0"
+                           step="any"
+                           inputmode="decimal"
+                           value="0">
+                </div>
+
+                <button type="button"
+                        id="calculateDiameter"
+                        class="calculate-button">
+                    Vypočítat průměr
+                </button>
+
+                <div class="result">
+                    <h2>Minimální průměr kulatiny</h2>
+                    <div id="diameterResult"
+                         class="result-value"
+                         aria-live="polite">–</div>
+                </div>
+
+            </section>
+
+            <!-- Výpočet prken a fošen -->
+            <section id="boardsSection" style="padding-top: 30px;" hidden>
+
+                <div class="input-group">
+                    <label for="thickness">Tloušťka (mm)</label>
+                    <input type="number"
+                           id="thickness"
+                           min="0"
+                           step="any"
+                           inputmode="decimal"
+                           placeholder="Zadejte tloušťku">
+                </div>
+
+                <div class="input-group">
+                    <label for="boardCount">Počet prken / fošen</label>
+                    <input type="number"
+                           id="boardCount"
+                           min="1"
+                           step="1"
+                           inputmode="numeric"
+                           placeholder="Zadejte počet">
+                </div>
+
+                <div class="input-group">
+                    <label for="kerf">Prořez (mm)</label>
+                    <input type="number"
+                           id="kerf"
+                           min="0"
+                           step="any"
+                           inputmode="decimal"
+                           value=" 2.5" />
+                </div>
+
+                <button type="button"
+                        id="calculateBoards"
+                        class="calculate-button">
+                    Vypočítat výšku
+                </button>
+
+                <div class="result">
+                    <h2>Výška hlavy</h2>
+
+                    <div id="boardsResult"
+                         class="result-value"
+                         aria-live="polite">–</div>
+
+                    <div id="boardsHeights"
+                         class="boards-heights"
+                         aria-live="polite"></div>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="./script.js"></script>
+
+    <script>
+                if ("serviceWorker" in navigator) {
+                    window.addEventListener("load", () => {
+                        navigator.serviceWorker.register("./service-worker.js")
+                            .catch(error =>
+                                console.error("Chyba Service Workeru:", error)
+                            );
+                    });
+                }
+    </script>
+</body>
+</html>
